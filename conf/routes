@@ -1,0 +1,50 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+#GET     /                           controllers.HomeController.index
+
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Serve index page from public directory
+GET     /                           controllers.FrontendController.index()
+
+# An example route (Prefix all API routes with apiPrefix defined in application.conf)
+#GET     /api/summary                controllers.HomeController.appSummary
+
+# Serve static assets under public directory
+#GET     /*file                      controllers.FrontendController.assetOrDefault(file)
+
+
+#GET     /index                           controllers.HomeController.main
+
+#GET     /test/:id                          controllers.HomeController.read(id: String)
+#http://localhost:9000/test/check
+
+# Map static resources from the /public folder to the /assets URL path
+#GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+GET  /favicon.png        controllers.Assets.at(path="/public/images", file="favicon.png")
+#GET     /assets/*file1              Assets.at("public/images", file1)
+
+GET     /sql                          controllers.SQLConversionController.readFile
+
+GET     /readText/:id                       controllers.SQLConversionController.readText(id: String)
+
+POST     /sqlToDataFrameConverter                       controllers.SQLController.sqlToDataFrameConverter
+POST     /testSqlPost                       controllers.SQLController.testSqlPost
+GET     /readFile1                       controllers.SQLController.readFile1
+POST    /storedProcedureToSparkConverter        controllers.SQLController.storedProcedureToSparkConverter
+
+GET     /hiveConnection                 controllers.SQLController.hiveConnection
+
+GET     /readMySQL                      controllers.SQLConversionController.readMySQL
+
+#POST    /convertSQL                controllers.SQLConversionController.convertSQL
+POST    /books                          controllers.SQLConversionController.addBook()
+GET    /readSQLQueries                 controllers.SQLConversionController.readSQLQueries

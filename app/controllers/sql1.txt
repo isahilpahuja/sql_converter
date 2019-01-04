@@ -1,0 +1,11 @@
+CREATE SQL
+--
+select e.empno, e.ename, d.deptno, d.dname,s.grade,s.hisal from emp e inner join dept d on e.deptno=d.deptno inner join salgrade s on e.empno=s.empno group by e.empno, e.ename, d.deptno,d.dname,s.grade,s.hisal order by e.empno;
+select e.ename, d.dname, e.sal*12 from emp e, dept d where e.deptno in (select deptno from emp group by deptno) and e.deptno = d.deptno;
+
+select * from emp where deptno not in (select deptno from dept );
+
+select empno, sal, comm, sal+sal*1.2+800 Net from emp where sal = (select max(sal) from emp );
+--
+END OF SQL
+

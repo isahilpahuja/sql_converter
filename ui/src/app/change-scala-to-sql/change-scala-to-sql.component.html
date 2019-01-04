@@ -1,0 +1,47 @@
+<div class="container-fluid convert-container">
+  <div class="card text-center mt-2">
+    <div class="card-header bg-primary text-white">
+      Demo to convert SQL to Scala
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="form-group col-12">
+          <label>Select DB</label>
+          <select class="custom-select" [(ngModel)]="db">
+            <!-- <option value=''>--Select DB--</option> -->
+            <option value='DB2'>DB2</option>
+            <option value='Oracle'>Oracle</option>
+            <option value='MySql'>MySql</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label>SQL Query</label>
+          <textarea class="form-control" rows="12" [(ngModel)]="query" placeholder="Enter Query"></textarea>
+        </div>
+        <div class="form-group col-6">
+          <label>Scala Query</label>
+          <textarea class="form-control" rows="12" [(ngModel)]="convertedQuery" disabled=true></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-12">
+          <button type="submit" class="btn btn-danger" (click)="reset()">Reset</button>
+          <button type="submit" class="btn btn-primary ml-5" (click)="submit('Scala')">Scala</button>
+          <button type="submit" class="btn btn-primary ml-5" (click)="submit('DataFrame')">DataFrame</button>
+          <button type="submit" class="btn btn-primary ml-5" (click)="download()">Download</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-12">
+          <label>Exception</label>
+          <textarea class="form-control" rows="4" [(ngModel)]="convertedQueryException" disabled=true></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spinner-container" *ngIf="isShowSpinner">
+    <p-progressSpinner class="spinner-loader"></p-progressSpinner>
+  </div>
+</div>

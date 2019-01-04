@@ -1,0 +1,10 @@
+CREATE OR REPLACE PROCEDURE PASS_VAR(CHARACTER VARYING(50))
+RETURNS CHARACTER VARYING(ANY) EXECUTE AS CALLER
+LANGUAGE NZPLSQL AS
+BEGIN_PROC
+ DECLARE coll_name CHARACTER VARYING(500); t1 ALIAS FOR $1;
+ BEGIN
+ select sqlext..group_concat(column_name) into coll_name from information_schema.columns
+ where table_name =t1;
+ return coll_name; END;
+END_PROC;
